@@ -1,0 +1,15 @@
+button {
+  width: 100%;
+  padding: 13px 17px;
+  background-color: #655ec9;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
