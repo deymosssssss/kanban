@@ -36,6 +36,9 @@
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 
+  text-overflow: ellipsis;
+  overflow: hidden;
+
   cursor: pointer;
 
   &._active {
