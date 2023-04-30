@@ -10,13 +10,14 @@
       <div
         *ngFor="let project of projects"
         class="menu__item"
+        [title]="project.title"
         [ngClass]="{ _active: activeItemId === project.id }"
         (click)="changeActiveItem(project.id)"
       >
         {{ project.title }}
       </div>
     </div>
-    <button class="add__button" (click)="createProjectEvent()">
+    <button class="add__button_project" (click)="createProjectEvent()">
       + Create New Board
     </button>
   </div>

@@ -1,7 +1,7 @@
 import { Task } from './task';
 
 export interface Section {
-  id: number;
+  id: string;
   title: string;
   tasks: Task[];
 }

@@ -1,3 +1,11 @@
 <div *ngIf="!isClosed" class="modal__main" (click)="closeBg()">
-  <app-add-project (closeEvent)="closeBg()"></app-add-project>
+  <app-add-project
+    *ngIf="currentID === modalsID.addProject"
+    (closeEvent)="closeBg()"
+  ></app-add-project>
+
+  <app-add-task
+    *ngIf="currentID === modalsID.addTask"
+    (closeEvent)="closeBg()"
+  ></app-add-task>
 </div>

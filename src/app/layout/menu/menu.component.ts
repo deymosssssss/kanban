@@ -1,8 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Project } from 'src/app/core/entitys/project';
 import { DataService } from 'src/app/core/services/data-service.service';
 import { ProjectStateService } from 'src/app/core/services/project-state.service';
-import { ModalManagerService } from 'src/app/modals/modal-manager.service';
+import {
+  ModalID,
+  ModalManagerService,
+} from 'src/app/modals/modal-manager.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,8 +20,10 @@ export class MenuComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public projectState: ProjectStateService,
-    private modalManagerService: ModalManagerService
+    private modalManagerService: ModalManagerService,
+    private router: Router
   ) {}
+
   ngOnInit(): void {
     this.dataService.getProjectsObs().subscribe((projects) => {
       this.projects = projects;
@@ -33,9 +39,10 @@ export class MenuComponent implements OnInit {
 
   changeActiveItem(id: string) {
     this.projectState.getCurrentProject().next(id);
+    this.router.navigate(['/project/' + id]);
   }
 
   createProjectEvent() {
-    this.modalManagerService.getModalObs().next(1);
+    this.modalManagerService.getModalObs().next(ModalID.addProject);
   }
 }

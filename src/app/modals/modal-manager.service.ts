@@ -11,3 +11,8 @@ export class ModalManagerService {
     return this.modalObs$;
   }
 }
+
+export enum ModalID {
+  addProject = 1,
+  addTask = 2,
+}

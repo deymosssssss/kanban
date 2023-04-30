@@ -1,10 +1,15 @@
 <div class="main">
-  <div class="flex__child">
-    <div class="main__title">Platform Launch</div>
+  <div
+    *ngIf="projectState.getCurrentProject() | async as activeItemId"
+    class="flex__child"
+  >
+    <div class="main__title">
+      {{ title }}
+    </div>
   </div>
 
   <div class="flex__child flex">
-    <app-button>+ Add new task</app-button>
+    <app-button (clickEvent)="createTaskEvent()">+ Add new task</app-button>
     <div class="btn__other">&nbsp;&nbsp;...</div>
   </div>
 </div>

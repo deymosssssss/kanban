@@ -5,9 +5,29 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class DataService {
-  private data$: BehaviorSubject<Project[]> = new BehaviorSubject(
-    [] as Project[]
-  );
+  private data$: BehaviorSubject<Project[]> = new BehaviorSubject([
+    {
+      id: v4(),
+      title: 'Project1Test',
+      sections: [
+        {
+          id: v4(),
+          title: 'qwe',
+          tasks: [],
+        },
+        {
+          id: v4(),
+          title: 'asd',
+          tasks: [],
+        },
+        {
+          id: v4(),
+          title: 'zxc',
+          tasks: [],
+        },
+      ],
+    },
+  ] as Project[]);
 
   constructor() {}
 
@@ -24,6 +44,12 @@ export class DataService {
         sections: [],
       },
     ]);
+  }
+
+  getProjectById(id: string) {
+    return this.data$.getValue().find((el) => {
+      return id === el.id;
+    });
   }
 
   // deleteProject() {}
